@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS menu_items (
     restaurant_id VARCHAR(50) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
 
-    
+
     CONSTRAINT fk_restaurant_id FOREIGN KEY (restaurant_id) REFERENCES restaurants (restaurant_id)
 );
 
@@ -15,4 +15,16 @@ CREATE TABLE IF NOT EXISTS restaurants (
     cuisine VARCHAR(50) NOT NULL,
     city VARCHAR(50) NOT NULL,
     rating FLOAT NOT NULL
+);
+
+
+-- Order Items table
+CREATE TABLE IF NOT EXISTS order_items (
+    order_id VARCHAR(50),
+    item_id VARCHAR(50) NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+
+    PRIMARY KEY (order_id, item_id) -- composite primary key
+    CONSTRAINT fk_item_id FOREIGN KEY (item_id) REFERENCES menu_items(item_id)
 );
