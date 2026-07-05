@@ -86,6 +86,12 @@ inner join books as b
 on a.author_id = b.author_id group by a.author_id;
 
 
+-- Get books with theirs authors and categories.
+
+select a.first_name, a.last_name, b.title, b.publication_year, STRING_AGG(c.category_name, ' | ') from books as b inner join author as a on b.author_id = a.author_id
+inner join book_categories as bc on bc.book_id = b.book_id
+inner join categories as c on c.category_id = bc.category_id
+group by b.book_id, a.first_name, a.last_name, b.title, b.publication_year;
 
 
 
