@@ -1,4 +1,4 @@
-order_id,customer_id,restaurant_id,order_time,delivery_time,status
+order_id,customer_id,restaurant_id,order_time,delivery_time,order_stauts
 O00001,C1234,R041,2023-01-17,2023-01-17 00:43:00,Late
 O00002,C1017,R019,2023-04-24,2023-04-24 00:33:00,Cancelled
 O00003,C0488,R045,2024-01-17,2024-01-17 00:29:00,Cancelled
