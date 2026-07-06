@@ -94,8 +94,30 @@ inner join categories as c on c.category_id = bc.category_id
 group by b.book_id, a.first_name, a.last_name, b.title, b.publication_year;
 
 
+-- Returns books published before 1950 and author born before 1900.
+
+select a.first_name, a.last_name, a.birth_year, b.title, b.publication_year from books as b
+inner join author as a on b.author_id = a.author_id
+and b.publication_year < 1950
+and a.birth_year < 1900;
 
 
+-- Returns books published more than 70 years ago, with author information.
+select b.title, b.publication_year, a.first_name, a.last_name from books as b
+inner join author as a on b.author_id = a.author_id
+where extract(year from current_date) - b.publication_year > 70;
+
+-- Find authors who have writter more than 1 book.
+
+select a.author_id, a.first_name, count(b.book_id) as book_count from books as b
+inner join author as a on b.author_id = a.author_id
+group by a.author_id, a.first_name
+having count(b.book_id) > 1;
+
+select b.author_id, count(*) as book_count
+from books as b
+group by b.author_id
+having count(*) > 1;
 
 
 
