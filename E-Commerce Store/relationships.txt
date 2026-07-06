@@ -1,0 +1,22 @@
+
+customers (1)
+      |
+      | customer_id
+      |
+orders (Many)
+      |
+      | order_id
+      |
+order_items (Many)
+      |
+      | product_id
+      |
+products (Many)
+      |
+      | category_id
+      |
+categories (1)
+
+orders (1)
+      |
+payments (1)
