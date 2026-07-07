@@ -38,3 +38,24 @@ GROUP BY
 
 -- Returns the total payment amount.
 SELECT SUM(amount) as total_amount FROM payments;
+
+-- Returns average product price.
+SELECT AVG(price) as avg_price FROM products;
+
+-- Returns customer whose name starts with 'A'.
+SELECT first_name, last_name
+FROM customers
+WHERE
+    first_name LIKE '%a';
+
+SELECT first_name, last_name
+FROM customers
+WHERE
+    first_name ILIKE 'A%';
+-- ILIKE for case-insensitive
+
+-- Returns those orders placed in February
+SELECT count(*) as order_count
+FROM orders
+WHERE
+    order_date BETWEEN '2024-02-01' AND '2024-02-28';
