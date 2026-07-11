@@ -29,17 +29,18 @@ SELECT * FROM public.accounts;
 
 -- Execute Transfer Transaction with Error Handling.
 DO $$ 
-BEGIN RAISE NOTICE 'Starting transfer...';
+BEGIN 
+    RAISE NOTICE 'Starting transfer...';
 
 -- Deduct $100 from Alice (Account 1)
-UPDATE accounts SET balance = balance - 100.00
-WHERE account_id = 1;
+    UPDATE accounts SET balance = balance - 100.00  
+    WHERE account_id = 1;
 
 -- Add $100 to Bob (Account 2)
-UPDATE accounts SET balance = balance + 100.00
-WHERE account_id = 2;
+    UPDATE accounts SET balance = balance + 100.00
+    WHERE account_id = 2;
 
-RAISE NOTICE 'Transfer successful! Committing changes...';
+    RAISE NOTICE 'Transfer successful! Committing changes...';
 
 EXCEPTION WHEN OTHERS THEN 
     RAISE WARNING 'An error occured! Rolling back transaction. Error: %',SQLERRM;
